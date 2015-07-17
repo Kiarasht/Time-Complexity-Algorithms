@@ -3,24 +3,32 @@ package restart.source;
 import java.util.Arrays;
 
 public class Main {
-    private static int multiply = 1;                                        // At 1 array is 1-10, at 2 array is 2-20...
-    private static int[] a = randomarray();
-    private static int x = randomnumber(multiply);
+    private static int size = 10;
 
     public static void main(String[] args) {
-
+        for (int i = 0; i < 6; ++i) {
+            int[] a = randomarray();
+            long startTime = System.currentTimeMillis();
+            //System.out.println(Arrays.toString(a));
+            Selectionsort.selectionsort(a);
+            //System.out.println(Arrays.toString(a));
+            long endTime = System.currentTimeMillis();
+            long totalTime = endTime - startTime;
+            System.out.println("Time for array of size " + size + ": " + totalTime + " milliseconds");
+            size = size * 10;
+        }
     }
 
     static int[] randomarray() {
-        int[] a = new int[randomnumber(multiply)];                          // Set up array size by the random value
+        int[] a = new int[size];
 
-        for (int i = 0; i < a.length; ++i) {                                // Give the first array random values
-            a[i] = randomnumber(multiply);
+        for (int i = 0; i < a.length; ++i) {
+            a[i] = randomnumber();
         }
         return a;
     }
 
-    static int randomnumber(int size) {
+    static int randomnumber() {
         return (int) (((Math.random() * 10) + 1) * size);
     }
 }
