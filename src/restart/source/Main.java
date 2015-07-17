@@ -1,20 +1,18 @@
 package restart.source;
 
-import java.util.Arrays;
-
 public class Main {
-    private static int size = 10;
+    private static int size = 100;
 
     public static void main(String[] args) {
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < 5; ++i) {
             int[] a = randomarray();
             long startTime = System.currentTimeMillis();
             //System.out.println(Arrays.toString(a));
-            Selectionsort.selectionsort(a);
+            Selectionsort.selectionsort(a, a.length);
             //System.out.println(Arrays.toString(a));
             long endTime = System.currentTimeMillis();
             long totalTime = endTime - startTime;
-            System.out.println("Time for array of size " + size + ": " + totalTime + " milliseconds");
+            System.out.println("\nTime for array of size " + size + ": " + totalTime + " milliseconds.");
             size = size * 10;
         }
     }
