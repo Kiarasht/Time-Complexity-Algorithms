@@ -11,7 +11,7 @@ public class Mergesort {
 			divide(v);
 			merge(a, u, v);                                                 // Start ordering them
 		}
-	}
+	} 
 
 	public static void merge(int[] a, int[] u, int[] v) {                   // merge will ignore duplicates
 		int i, j, k;

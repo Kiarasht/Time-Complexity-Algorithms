@@ -13,9 +13,9 @@ public class Selectionsort {
 				}
 			}
 			swap(a, index, i);                                              // Swap in the smaller number
-			System.out.print("Hang tight, we are " + loading(i, n) + "% done. " + (i + 2) + "/" + n + "\r");
-		}
-		return a;
+			//System.out.print("Hang tight, we are " + loading(i, n) + "% done. " + (i + 2) + "/" + n + "\r");
+		}                                                                   // Percentage commented since it slowed it
+		return a;                                                           // down too much
 	}
 
 	private static void swap(int[] a, int i, int j) {                       // Swaps the smallest number found in the array
