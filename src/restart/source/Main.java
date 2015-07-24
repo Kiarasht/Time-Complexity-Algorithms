@@ -10,19 +10,19 @@ public class Main {
 	private static int [][] b = new int[loop][];
 
 	public static void main(String[] args) throws InterruptedException {
-		long totalTime;		// Used to calculate time at each sub section
+		long totalTime;								// Used to calculate time at each sub section
 		long endTime;
 		long startTime;
 		long Selection = 0;
 		long Merge = 0;
 		long Insertion = 0;
 
-		for (int i = 0; i < loop; ++i) {							// Get a random array of arrays
+		for (int i = 0; i < loop; ++i) {			// Get a random array of arrays
 			a[i] = randomarray();
 			size *= 10;
 		}
 
-		for (int i = 0; i < loop; i++) {							// Keep a copy of the array a
+		for (int i = 0; i < loop; i++) {			// Keep a copy of the array a
 			b[i] = new int[a[i].length];
 			System.arraycopy(a[i], 0, b[i], 0, a[i].length);
 		}
@@ -30,7 +30,7 @@ public class Main {
 		System.out.println("First, Selection.\n");
 		Thread.sleep(4000);
 
-		for (int i = 0; i < loop; ++i) {							// Do the test on Selectionsort
+		for (int i = 0; i < loop; ++i) {			// Do the test on Selectionsort
 			startTime = System.currentTimeMillis();
 			Selectionsort.selectionsort(a[i], a[i].length);
 			endTime = System.currentTimeMillis();
@@ -40,7 +40,7 @@ public class Main {
 		}
 		System.out.println("Total Time: " + Selection + " milliseconds.");
 
-		for (int i = 0; i < loop; i++) {							// Now that a is sorted, we copy
+		for (int i = 0; i < loop; i++) {			// Now that a is sorted, we copy
 			System.arraycopy(b[i], 0, a[i], 0, a[i].length);		// back the random array in it again
 		}
 
