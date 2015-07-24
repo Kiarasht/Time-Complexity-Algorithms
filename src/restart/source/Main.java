@@ -40,6 +40,10 @@ public class Main {
 		}
 		System.out.println("Total Time: " + Selection + " milliseconds.");
 
+		for (int i = 0; i < loop; i++) {							// Now that a is sorted, we copy
+			System.arraycopy(b[i], 0, a[i], 0, a[i].length);		// back the random array in it again
+		}
+
 		System.out.println("\nSecond, Merge.\n");
 		Thread.sleep(4000);
 
@@ -52,6 +56,10 @@ public class Main {
 			System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
 		}
 		System.out.println("Total Time: " + Merge + " milliseconds.");
+
+		for (int i = 0; i < loop; i++) {							// Now that a is sorted, we copy
+			System.arraycopy(b[i], 0, a[i], 0, a[i].length);		// back the random array in it again
+		}
 
 		System.out.println("\nThird, Insertion.\n");
 		Thread.sleep(4000);
@@ -92,7 +100,7 @@ public class Main {
 		return a;
 	}
 
-	static int randomnumber() {
+	static int randomnumber() {										// Throw a random number
 		return (int) (((Math.random() * 10) + 1) * size);
 	}
 }

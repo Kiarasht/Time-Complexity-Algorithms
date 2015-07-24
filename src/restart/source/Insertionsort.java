@@ -8,8 +8,8 @@ public class Insertionsort {
 			int x = a[i];                                               // it finds its perfect place
 			j = i;
 
-			while (j > 0 && a[j - 1] > x) {
-				a[j] = a[j - 1];
+			while (j > 0 && a[j - 1] > x) {								// Move element one ahead to create space
+				a[j] = a[j - 1];										// for the coming element
 				j = j - 1;
 			}
 			a[j] = x;
