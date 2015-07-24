@@ -10,7 +10,7 @@ public class Main {
 	private static int [][] b = new int[loop][];
 
 	public static void main(String[] args) throws InterruptedException {
-		long totalTime;												// Used to calculate time at each sub section
+		long totalTime;		// Used to calculate time at each sub section
 		long endTime;
 		long startTime;
 		long Selection = 0;
