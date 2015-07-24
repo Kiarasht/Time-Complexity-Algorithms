@@ -17,12 +17,12 @@ public class Main {
 		long Merge = 0;
 		long Insertion = 0;
 
-		for (int i = 0; i < loop; ++i) {
+		for (int i = 0; i < loop; ++i) {							// Get a random array of arrays
 			a[i] = randomarray();
 			size *= 10;
 		}
 
-		for (int i = 0; i < loop; i++) {
+		for (int i = 0; i < loop; i++) {							// Keep a copy of the array a
 			b[i] = new int[a[i].length];
 			System.arraycopy(a[i], 0, b[i], 0, a[i].length);
 		}
