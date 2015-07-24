@@ -31,7 +31,6 @@
         </XML>
         <codeStyleSettings language="JAVA">
           <indentOptions>
-            <option name="INDENT_SIZE" value="2" />
             <option name="USE_TAB_CHARACTER" value="true" />
           </indentOptions>
         </codeStyleSettings>

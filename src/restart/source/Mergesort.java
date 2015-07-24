@@ -30,7 +30,7 @@ public class Mergesort {
 					}
 				}
 				if (k >= v.length) {                                        // Array v is exhausted
-					while (j < u.length) {                                  // Copy remaining u elements
+					while (j < u.length) {                                 	// Copy remaining u elements
 						a[i++] = u[j++];
 					}
 				}

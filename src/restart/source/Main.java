@@ -6,23 +6,24 @@ import java.text.NumberFormat;
 public class Main {
 	private static int size = 10;
 	private static int loop = 5;
-	private static int [][] a = new int[loop][];
-	private static int [][] b = new int[loop][];
+	private static int[][] a = new int[loop][];
+	private static int[][] b = new int[loop][];
 
 	public static void main(String[] args) throws InterruptedException {
-		long totalTime;								// Used to calculate time at each sub section
+		long totalTime;												// Used to calculate time at each sub section
 		long endTime;
 		long startTime;
 		long Selection = 0;
 		long Merge = 0;
 		long Insertion = 0;
+		long Bubble = 0;
 
-		for (int i = 0; i < loop; ++i) {			// Get a random array of arrays
+		for (int i = 0; i < loop; ++i) {							// Get a random array of arrays
 			a[i] = randomarray();
 			size *= 10;
 		}
 
-		for (int i = 0; i < loop; i++) {			// Keep a copy of the array a
+		for (int i = 0; i < loop; i++) {							// Keep a copy of the array a
 			b[i] = new int[a[i].length];
 			System.arraycopy(a[i], 0, b[i], 0, a[i].length);
 		}
@@ -30,7 +31,7 @@ public class Main {
 		System.out.println("First, Selection.\n");
 		Thread.sleep(4000);
 
-		for (int i = 0; i < loop; ++i) {			// Do the test on Selectionsort
+		for (int i = 0; i < loop; ++i) {							// Do the test on Selectionsort
 			startTime = System.currentTimeMillis();
 			Selectionsort.selectionsort(a[i], a[i].length);
 			endTime = System.currentTimeMillis();
@@ -40,10 +41,10 @@ public class Main {
 		}
 		System.out.println("Total Time: " + Selection + " milliseconds.");
 
-		for (int i = 0; i < loop; i++) {			// Now that a is sorted, we copy
+		for (int i = 0; i < loop; i++) {							// Now that a is sorted, we copy
 			System.arraycopy(b[i], 0, a[i], 0, a[i].length);		// back the random array in it again
-		}
-
+		}															// This way, the same array will be used
+																	// for each sorting algorithm
 		System.out.println("\nSecond, Merge.\n");
 		Thread.sleep(4000);
 
@@ -74,20 +75,50 @@ public class Main {
 		}
 		System.out.println("Total Time: " + Insertion + " milliseconds.");
 
-		compare("Selection", Selection, "Merge", Merge);			// Compare all of them
+		for (int i = 0; i < loop; i++) {							// Now that a is sorted, we copy
+			System.arraycopy(b[i], 0, a[i], 0, a[i].length);		// back the random array in it again
+		}
+
+		System.out.println("\nFourth, Bubble.\n");
+		Thread.sleep(4000);
+
+		for (int i = 0; i < loop; ++i) {							// Do the test on Insertion
+			startTime = System.currentTimeMillis();
+			Bubblesort.BubbleSort(a[i], a[i].length);
+			endTime = System.currentTimeMillis();
+			totalTime = endTime - startTime;
+			Bubble += totalTime;
+			System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+		}
+		System.out.println("Total Time: " + Bubble + " milliseconds.");
+
+		compare("Selection", Selection, "Merge", Merge);            // Compare all of them
 		compare("Insertion", Insertion, "Merge", Merge);
+		compare("Bubblesort", Bubble, "Merge", Merge);
+		System.out.println();
+		compare("Selection", Selection, "Bubblesort", Bubble);
+		compare("Insertion", Insertion, "Bubblesort", Bubble);
+		compare("Merge", Merge, "Bubblesort", Bubble);
+		System.out.println();
+		compare("Insertion", Insertion, "Selection", Selection);
+		compare("Bubblesort", Bubble, "Selection", Selection);
+		compare("Merge", Merge, "Selection", Selection);
+		System.out.println();
 		compare("Selection", Selection, "Insertion", Insertion);
+		compare("Bubblesort", Bubble, "Insertion", Insertion);
+		compare("Merge", Merge, "Insertion", Insertion);
+
 	}
 
 	private static void compare(String First, long first, String Second, long second) {
 		float x = ((float) first / (float) second);
-		NumberFormat numberformat = new DecimalFormat("##.##");
+		NumberFormat numberformat = new DecimalFormat("##.####");
 		String s = numberformat.format(x);
 
 		if (first > second) {
 			System.out.print("\n" + Second + " was " + s + " times faster than " + First + ".");
 		} else {
-			System.out.print("\n" + Second + " was " + s + " times slower than " + First + ".");
+			System.out.print("\n" + Second + " was " + s + " the speed of " + First + ".");
 		}
 	}
 
