@@ -14,7 +14,7 @@ public class Main {
 		long endTime;
 		long startTime;
 		long Selection = 0;
-		long Merge = 0;
+		long Merge = 0; 
 		long Insertion = 0;
 		long Bubble = 0;
 
