@@ -10,7 +10,7 @@ public class Main {
 	private static int[][] b = new int[loop][];
 
 	public static void main(String[] args) throws InterruptedException {
-		long totalTime;												// Used to calculate time at each sub section
+		long totalTime;                                             // Used to calculate time at each sub section
 		long endTime;
 		long startTime;
 		long Selection = 0;
@@ -18,12 +18,12 @@ public class Main {
 		long Insertion = 0;
 		long Bubble = 0;
 
-		for (int i = 0; i < loop; ++i) {							// Get a random array of arrays
+		for (int i = 0; i < loop; ++i) {                            // Get a random array of arrays
 			a[i] = randomarray();
 			size *= 10;
 		}
 
-		for (int i = 0; i < loop; i++) {							// Keep a copy of the array a
+		for (int i = 0; i < loop; i++) {                            // Keep a copy of the array a
 			b[i] = new int[a[i].length];
 			System.arraycopy(a[i], 0, b[i], 0, a[i].length);
 		}
@@ -31,7 +31,7 @@ public class Main {
 		System.out.println("First, Selection.\n");
 		Thread.sleep(4000);
 
-		for (int i = 0; i < loop; ++i) {							// Do the test on Selection
+		for (int i = 0; i < loop; ++i) {                            // Do the test on Selection
 			startTime = System.currentTimeMillis();
 			Selectionsort.selectionsort(a[i], a[i].length);
 			endTime = System.currentTimeMillis();
