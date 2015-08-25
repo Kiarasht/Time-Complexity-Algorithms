@@ -13,7 +13,7 @@ public class Selectionsort {
 				}
 			}
 			swap(a, index, i);                                  // Swap in the smaller number
-			//System.out.print("Hang tight, we are " + loading(i, n) + "% done. " + (i + 2) + "/" + n + "\r");
+			System.out.print("Hang tight, we are " + loading(i, n) + "% done. " + (i + 2) + "/" + n + "\r");
 		}                                                       // Loading commented since it slowed it the
 		return a;                                               // algorithm down too much
 	}
