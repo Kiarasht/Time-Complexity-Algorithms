@@ -122,10 +122,10 @@ public class Main {
 		}
 	}
 
-	static int[] randomarray() {                                // Get a random array of specified size
+	static int[] randomarray() {                                    // Get a random array of specified size
 		int[] a = new int[size];
 
-		for (int i = 0; i < a.length; ++i) {                    // Get random elements for it
+		for (int i = 0; i < a.length; ++i) {                        // Get random elements for it
 			a[i] = randomnumber();
 		}
 		return a;
