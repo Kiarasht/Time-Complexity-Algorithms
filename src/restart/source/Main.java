@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 public class Main {
 	private static int size = 10;
 	private static int loop = 5;
+    private static int current = 0;
 	private static int[][] a = new int[loop][];
 	private static int[][] b = new int[loop][];
 
@@ -28,8 +29,7 @@ public class Main {
 			System.arraycopy(a[i], 0, b[i], 0, a[i].length);
 		}
 
-		System.out.println("First, Selection.\n");
-		Thread.sleep(4000);
+        ready("First", "Selection");
 
 		for (int i = 0; i < loop; ++i) {                            // Do the test on Selection
 			startTime = System.currentTimeMillis();
@@ -45,8 +45,7 @@ public class Main {
 			System.arraycopy(b[i], 0, a[i], 0, a[i].length);
 		}                                                           // This way, the same array will be used
                                                                     // for each sorting algorithm
-		System.out.println("\nSecond, Merge.\n");
-		Thread.sleep(4000);
+        ready("Second", "Mergesort");
 
 		for (int i = 0; i < loop; ++i) {                            // Do the test on Merge
 			startTime = System.currentTimeMillis();
@@ -62,8 +61,7 @@ public class Main {
 			System.arraycopy(b[i], 0, a[i], 0, a[i].length);
 		}
 
-		System.out.println("\nThird, Insertion.\n");
-		Thread.sleep(4000);
+        ready("Third", "Insertion");
 
 		for (int i = 0; i < loop; ++i) {                            // Do the test on Insertion
 			startTime = System.currentTimeMillis();
@@ -79,8 +77,7 @@ public class Main {
 			System.arraycopy(b[i], 0, a[i], 0, a[i].length);
 		}
 
-		System.out.println("\nFourth, Bubble.\n");
-		Thread.sleep(4000);
+        ready("Fourth", "Bubble");
 
 		for (int i = 0; i < loop; ++i) {                            // Do the test on Bubble
 			startTime = System.currentTimeMillis();
@@ -134,4 +131,19 @@ public class Main {
 	static int randomnumber() {										// Throw a random number
 		return (int) (((Math.random() * 10) + 1) * size);
 	}
+
+    static void ready(String position, String sort) throws InterruptedException {
+        if (current == 0) {
+            ++current;
+        } else {
+            System.out.println();
+        }
+        System.out.print(position + ", " + sort + ".");
+        Thread.sleep(1000);
+        System.out.print(".");
+        Thread.sleep(1000);
+        System.out.print(".");
+        Thread.sleep(1000);
+        System.out.println(".\n");
+    }
 }
