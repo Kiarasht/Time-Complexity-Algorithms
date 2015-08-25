@@ -10,7 +10,7 @@ public class Main {
 	private static int[][] b = new int[loop][];
 
 	public static void main(String[] args) throws InterruptedException {
-		long totalTime;																// Used to calculate time at each sub section
+		long totalTime;												// Used to calculate time at each sub section
 		long endTime;
 		long startTime;
 		long Selection = 0;
@@ -40,11 +40,11 @@ public class Main {
 			System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
 		}
 		System.out.println("Total Time: " + Selection + " milliseconds.");
-																									// Now that a is sorted, we copy
+																	// Now that a is sorted, we copy
 		for (int i = 0; i < loop; i++) {							// back the random array in it again
 			System.arraycopy(b[i], 0, a[i], 0, a[i].length);
-		}																							// This way, the same array will be used
-																									// for each sorting algorithm
+		}															// This way, the same array will be used
+																	// for each sorting algorithm
 		System.out.println("\nSecond, Merge.\n");
 		Thread.sleep(4000);
 
@@ -91,7 +91,7 @@ public class Main {
 			System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
 		}
 		System.out.println("Total Time: " + Bubble + " milliseconds.");
-																									// Compare all of them
+																	// Compare all of them
 		compare("Selection", Selection, "Merge", Merge);
 		compare("Insertion", Insertion, "Merge", Merge);
 		compare("Bubblesort", Bubble, "Merge", Merge);
@@ -122,7 +122,7 @@ public class Main {
 		}
 	}
 
-	static int[] randomarray() {										// Get a random array of specified size
+	static int[] randomarray() {								// Get a random array of specified size
 		int[] a = new int[size];
 
 		for (int i = 0; i < a.length; ++i) {					// Get random elements for it
