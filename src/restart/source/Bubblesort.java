@@ -8,7 +8,7 @@ public class Bubblesort {
 		do {
 			flag = false;                                       // Start with a flag of false
 			for (int i = 0; i < n - 1; ++i) {
-				if (a[i] < a[i + 1]) {                          // Array is still not sorted
+				if (a[i] > a[i + 1]) {                          // Array is still not sorted
 					swap(a, i, i + 1);                          // will have to loop again
 					flag = true;
 				}
