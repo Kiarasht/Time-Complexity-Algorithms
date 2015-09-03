@@ -5,6 +5,10 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Main class holds the functions and variables that are needed to use and test the different sorting algorithms.
+ * Also creates arrays of sizes 10, 100, 1000, 10000, and 100000 to test the performance of each algorithm.
+ */
 public class Main {
     private static Map<Integer, String> data = new HashMap<>();
     private final static int SORT_IMPLEMENTED = 4;
