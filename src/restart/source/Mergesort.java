@@ -6,7 +6,7 @@ public class Mergesort {
     public static void divide(int[] a) {                                // Divides a given array recursively
         if (a.length > 1) {
             int[] u = Arrays.copyOfRange(a, 0, a.length / 2);           // Copy from array a, start to halfway
-            int[] v = Arrays.copyOfRange(a, a.length / 2 , a.length);    // Copy from array a, halfway to end
+            int[] v = Arrays.copyOfRange(a, a.length / 2 , a.length);   // Copy from array a, halfway to end
             divide(u);                                                  // Recursively divide each array
             divide(v);
             merge(a, u, v);                                             // Start ordering them
