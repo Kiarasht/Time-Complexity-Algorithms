@@ -2,8 +2,16 @@ package restart.source;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
+    private static Map<Integer, String> data = new HashMap<>();
+    private final static int SORT_IMPLEMENTED = 4;
+    private static int leaderinsertion = 0;
+    private static int leaderselection = 0;
+    private static int leaderbubble = 0;
+    private static int leadermerge = 0;
     private static int size = 10;
     private static int loop = 5;
     private static int current = 0;
@@ -106,6 +114,12 @@ public class Main {
             compare("Selection", Selection, "Insertion", Insertion);
             compare("Bubblesort", Bubble, "Insertion", Insertion);
             compare("Merge", Merge, "Insertion", Insertion);
+            data.put(leaderinsertion, "Insertion");
+            data.put(leaderselection, "Selection");
+            data.put(leaderbubble, "Bubble");
+            data.put(leadermerge, "Merge");
+
+            leaderboard();
 
         } catch (InterruptedException e) {
             System.out.println("I had trouble using the sleep function. Here is what happened:\n");
@@ -115,6 +129,22 @@ public class Main {
             System.out.println("I had trouble running the main function. Here is what happened:\n");
             System.out.println(e.getMessage());
             System.exit(1);
+        }
+    }
+
+    /**
+     * Sorts and prints algorithms based on which ever performed the best to which ever performed
+     * the worse. Uses the map data type to link an Integer value to its String.
+     */
+    private static void leaderboard() {
+        int order = 1;
+        System.out.println("\n");
+        System.out.println("Leaderboard:\n");
+
+        for (int i = 0; i < SORT_IMPLEMENTED; ++i) {
+            String result = data.get(i);
+            System.out.println(order + ") " + result);
+            ++order;
         }
     }
 
@@ -135,6 +165,20 @@ public class Main {
 
         if (first > second) {
             System.out.print("\n" + Second + " was " + s + " times faster than " + First + ".");
+            switch (First) {
+                case "Selection":
+                    ++leaderselection;
+                    break;
+                case "Insertion":
+                    ++leaderinsertion;
+                    break;
+                case "Bubblesort":
+                    ++leaderbubble;
+                    break;
+                case "Merge":
+                    ++leadermerge;
+                    break;
+            }
         } else {
             System.out.print("\n" + Second + " was " + s + " the speed of " + First + ".");
         }
