@@ -13,6 +13,7 @@ public class Mergesort {
      * divide is the function where we will simply divide our problem into two or more sub-problems. We achieve
      * this by creating new arrays half of the size of the previous caller, appropriately copy them and recursively
      * call ourselves for more division.
+     *
      * @param a An array that is to be sorted at each recursion call.
      */
     public static void divide(int[] a) {                                // Divides a given array recursively
@@ -29,6 +30,7 @@ public class Mergesort {
      * merge is the second part of the mergesort that starts sorting arrays one that is double in size.
      * Remember that merge was also included in divide so this function can be also called many times
      * by the recursion.
+     *
      * @param a An array that has the size of u + v. We know this because in divide we did both F(u/2) and C(v/2)
      * @param u The first half of array a
      * @param v The second half of array a
@@ -63,6 +65,7 @@ public class Mergesort {
      * the mergesort. Since we are on java we can't just declare a new array of size a since then we won't
      * be changing the original array a anymore. An easy way is to for now just replace the duplicates with
      * 0 and then we can go later and clear them out.
+     *
      * @param a An array that needs to be sorted
      * @param u The first half of array a
      * @param v The second half of array a
@@ -111,6 +114,7 @@ public class Mergesort {
      * cleanup goes through an array and removes any zeros inside the array. This function should not be called
      * if zeros are expected into your array, otherwise you will delete values that you wouldn't wanted have. Here
      * see zero as a value that should not be in that array and we need to remove it.
+     *
      * @param c An array passed in, we will remove the zeros from this array
      * @return Returns an array with the correct size after the zeros have been removed or null if the array passed
      * in does not exist or is too small

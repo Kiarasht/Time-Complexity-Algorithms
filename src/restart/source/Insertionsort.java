@@ -8,6 +8,7 @@ public class Insertionsort {
 
     /**
      * The main function where the Insertionsort algorithm is defined.
+     *
      * @param a An array that needs to be sorted
      * @param n The size of the array being passed from Main
      */
