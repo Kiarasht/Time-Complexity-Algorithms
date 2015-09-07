@@ -2,17 +2,38 @@ package restart.source;
 
 import java.util.Arrays;
 
+/**
+ * One of the most complicated sorting algorithms, but also the fastest one. It recursively calls and divides
+ * itself into sub arrays and sorts them as it starts to return to the caller. Mergesort is known as a divide
+ * and conquer since it breaks down the problem into two or more sub-problems.
+ */
 public class Mergesort {
+
+    /**
+     * divide is the function where we will simply divide our problem into two or more sub-problems. We achieve
+     * this by creating new arrays half of the size of the previous caller, appropriately copy them and recursively
+     * call ourselves for more division.
+     * @param a An array that is to be sorted at each recursion call.
+     */
     public static void divide(int[] a) {                                // Divides a given array recursively
-        if (a.length > 1) {
-            int[] u = Arrays.copyOfRange(a, 0, a.length / 2);           // Copy from array a, start to halfway
-            int[] v = Arrays.copyOfRange(a, a.length / 2 , a.length);   // Copy from array a, halfway to end
+        if (a.length > 1) {                                             // Divide a into two sub arrays
+            int[] u = Arrays.copyOfRange(a, 0, (int) Math.floor(a.length / 2));
+            int[] v = Arrays.copyOfRange(a, (int) Math.ceil(a.length / 2), a.length);
             divide(u);                                                  // Recursively divide each array
             divide(v);
             merge(a, u, v);                                             // Start ordering them
         }
     }
 
+    /**
+     * merge is the second part of the mergesort that starts sorting arrays one that is double in size.
+     * Remember that merge was also included in divide so this function can be also called many times
+     * by the recursion.
+     * @param a An array that has the size of u + v. We know this because in divide we did both u/2 and v/2
+     *          So for an array of size 13,
+     * @param u
+     * @param v
+     */
     public static void merge(int[] a, int[] u, int[] v) {               // merge will ignore duplicates
         int i, j, k;
         i = j = k = 0;
