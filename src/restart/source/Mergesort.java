@@ -16,7 +16,7 @@ public class Mergesort {
      * @param a An array that is to be sorted at each recursion call.
      */
     public static void divide(int[] a) {                                // Divides a given array recursively
-        if (a.length > 1) {                                             // Divide a into two sub arrays
+        if (a.length > 1) {                                             // Divide array a into two sub arrays
             int[] u = Arrays.copyOfRange(a, 0, (int) Math.floor(a.length / 2));
             int[] v = Arrays.copyOfRange(a, (int) Math.ceil(a.length / 2), a.length);
             divide(u);                                                  // Recursively divide each array
@@ -29,10 +29,9 @@ public class Mergesort {
      * merge is the second part of the mergesort that starts sorting arrays one that is double in size.
      * Remember that merge was also included in divide so this function can be also called many times
      * by the recursion.
-     * @param a An array that has the size of u + v. We know this because in divide we did both u/2 and v/2
-     *          So for an array of size 13,
-     * @param u
-     * @param v
+     * @param a An array that has the size of u + v. We know this because in divide we did both F(u/2) and C(v/2)
+     * @param u The first half of array a
+     * @param v The second half of array a
      */
     public static void merge(int[] a, int[] u, int[] v) {               // merge will ignore duplicates
         int i, j, k;
@@ -58,7 +57,16 @@ public class Mergesort {
             }
         }
     }
-                                                                        // mergenoduplicate will now ignore duplicates
+
+    /**
+     * mergeoduplicate will need to be called instead of merge if we wish to remove any duplicates from
+     * the mergesort. Since we are on java we can't just declare a new array of size a since then we won't
+     * be changing the original array a anymore. An easy way is to for now just replace the duplicates with
+     * 0 and then we can go later and clear them out.
+     * @param a An array that needs to be sorted
+     * @param u The first half of array a
+     * @param v The second half of array a
+     */
     public static void mergenoduplicate(int[] a, int[] u, int[] v) {
         int i, j, k;                                                    // It needs help from cleanup
         i = j = k = 0;
@@ -99,6 +107,14 @@ public class Mergesort {
         }
     }
 
+    /**
+     * cleanup goes through an array and removes any zeros inside the array. This function should not be called
+     * if zeros are expected into your array, otherwise you will delete values that you wouldn't wanted have. Here
+     * see zero as a value that should not be in that array and we need to remove it.
+     * @param c An array passed in, we will remove the zeros from this array
+     * @return Returns an array with the correct size after the zeros have been removed or null if the array passed
+     * in does not exist or is too small
+     */
     public int[] cleanup(int[] c) {                                     // Removes 0s from passed in arrays
         if (c != null && c.length > 0) {
             int[] temp = new int[c.length];                             // Temp array with same size
