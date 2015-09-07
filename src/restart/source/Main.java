@@ -7,7 +7,11 @@ import java.util.Map;
 
 /**
  * Main class holds the functions and variables that are needed to use and test the different sorting algorithms.
- * Also creates arrays of sizes 10, 100, 1000, 10000, and 100000 to test the performance of each algorithm.
+ * Also creates arrays of sizes 10, 100, 1000, 10000, and 100000 to test the performance of each algorithm. Before
+ * you begin using or reading this program you should know where some of the stuffs here came from:
+ * https://en.wikipedia.org/wiki/Main_Page
+ * http://www.sorting-algorithms.com/
+ * http://bigocheatsheet.com/
  */
 public class Main {
     private static Map<Integer, String> data = new HashMap<>();

@@ -16,6 +16,7 @@ public class Selectionsort {
     /**
      * Main functions where selection sort is performed. Goes through the array constantly checking if an
      * index is smaller that the one started with. The index could be replaced n times if the array is reversed.
+     *
      * @param a An array that is needed to be sorted
      * @param n Holds the size of the array
      * @return Returns the array to the caller.
@@ -51,6 +52,7 @@ public class Selectionsort {
     /**
      * Prints a percentage based on the size of the array and how much have the program has calculated. Removed
      * since it can mess up the timing.
+     *
      * @param i Array index currently at
      * @param n The size of the array
      * @return Returns a percentage using numberformat to only be in an int format.
