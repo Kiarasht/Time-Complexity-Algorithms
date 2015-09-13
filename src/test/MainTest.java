@@ -2,10 +2,7 @@ package test;
 
 import java.util.Arrays;
 import org.junit.Test;
-import restart.source.Insertionsort;
-import restart.source.Bubblesort;
-import restart.source.Mergesort;
-import restart.source.Selectionsort;
+import restart.source.*;
 import static org.junit.Assert.*;
 
 public class MainTest {
@@ -182,6 +179,52 @@ public class MainTest {
             Selectionsort.selectionsort(a[1], a[1].length);
             Selectionsort.selectionsort(a[2], a[2].length);
             Selectionsort.selectionsort(a[3], a[3].length);
+            Arrays.sort(sorta);                     // Sort using java provided sort
+            Arrays.sort(sortb);
+            Arrays.sort(sortc);
+            Arrays.sort(sortd);                     // Compare to see if our algorithm works
+            assertTrue(Arrays.equals(a[0], sorta));
+            assertTrue(Arrays.equals(a[1], sortb));
+            assertTrue(Arrays.equals(a[2], sortc));
+            assertTrue(Arrays.equals(a[3], sortd));
+        }
+    }
+
+    @Test
+    public void chechQuick() {
+        int size = 100;
+        int k = 0;
+        int a[][] = new int[4][];
+
+        for (int i = 0; i < a.length; ++i) {        //Initialize all arrays to size of 100, 4 of them
+            a[i] = new int[100];
+        }
+        for (int i = 0; i < a[0].length; ++i) {     // This array is already sorted
+            a[0][i] = i;
+        }
+        for (int i = 100; i > 0; --i) {             // This array is in reverse
+            a[1][k++] = i;
+        }
+        for (int i = 0; i < a[2].length; ++i) {     // This array is random. * by size then casts
+            a[2][i] = (int) (((Math.random() * 10) + 1) * size);
+        }
+        for (int i = 0; i < a[3].length; ++i) {     // This array is random with many alike values. Casts then * by size
+            a[3][i] = (int) ((Math.random() * 10) + 1) * size;
+        }
+
+        for (int i = 0; i < a[0].length; ++i) {
+            int [] sorta = new int[100];            // Get the same amount of arrays
+            int [] sortb = new int[100];
+            int [] sortc = new int[100];
+            int [] sortd = new int[100];            // Copy values to new arrays
+            System.arraycopy(a[0], 0, sorta, 0, a[0].length);
+            System.arraycopy(a[1], 0, sortb, 0, a[1].length);
+            System.arraycopy(a[2], 0, sortc, 0, a[2].length);
+            System.arraycopy(a[3], 0, sortd, 0, a[3].length);
+            Quicksort.quickSort(a[0], 0, a[0].length - 1);// Sort using our code
+            Quicksort.quickSort(a[1], 0, a[1].length - 1);
+            Quicksort.quickSort(a[2], 0, a[2].length - 1);
+            Quicksort.quickSort(a[3], 0, a[3].length - 1);
             Arrays.sort(sorta);                     // Sort using java provided sort
             Arrays.sort(sortb);
             Arrays.sort(sortc);

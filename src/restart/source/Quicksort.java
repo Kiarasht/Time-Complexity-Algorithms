@@ -2,7 +2,7 @@ package restart.source;
 
 
 public class Quicksort {
-    static int partition(int a[], int low, int high) {
+    private static int partition(int a[], int low, int high) {
         int pivot = a[(low + high) / 2];                // Finding the pivot
 
         while (low <= high) {
@@ -17,7 +17,7 @@ public class Quicksort {
         return low;
     }
 
-    static void quickSort(int a[], int low, int high) {
+    public static void quickSort(int a[], int low, int high) {
         int index = partition(a, low, high);
         if (low < index - 1)
             quickSort(a, low, index - 1);
