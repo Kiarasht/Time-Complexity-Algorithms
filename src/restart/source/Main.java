@@ -16,11 +16,12 @@ import java.util.Map;
  */
 public class Main {
     private static Map<Integer, String> data = new HashMap<>();
-    private final static int SORT_IMPLEMENTED = 4;
+    private final static int SORT_IMPLEMENTED = 5;
     private static int leaderinsertion = 0;
     private static int leaderselection = 0;
     private static int leaderbubble = 0;
     private static int leadermerge = 0;
+    private static int leaderquick = 0;
     private static int size = 10;
     private static int loop = 5;
     private static int current = 0;
@@ -46,6 +47,7 @@ public class Main {
             long Merge = 0;
             long Insertion = 0;
             long Bubble = 0;
+            long Quick = 0;
 
             for (int i = 0; i < loop; ++i) {
                 a[i] = randomarray();
@@ -108,6 +110,19 @@ public class Main {
             }
             System.out.println("Total Time: " + Bubble + " milliseconds.");
 
+            recopy();
+            ready("Fifth", "Quick");
+
+            for (int i = 0; i < loop; ++i) {
+                startTime = System.currentTimeMillis();
+                Quicksort.quickSort(a[i], 0, a[i].length - 1);
+                endTime = System.currentTimeMillis();
+                totalTime = endTime - startTime;
+                Quick += totalTime;
+                System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+            }
+            System.out.println("Total Time: " + Quick + " milliseconds.");
+
             compare("Selection", Selection, "Merge", Merge);
             compare("Insertion", Insertion, "Merge", Merge);
             compare("Bubblesort", Bubble, "Merge", Merge);
@@ -131,11 +146,11 @@ public class Main {
             leaderboard();
 
         } catch (InterruptedException e) {
-            System.out.println("I had trouble using the sleep function. Here is what happened:\n");
+            System.out.println("I had trouble using the sleep function. Here is what happened:");
             System.out.println(e.getMessage());
             System.exit(1);
         } catch (Exception e) {
-            System.out.println("I had trouble running the main function. Here is what happened:\n");
+            System.out.println("I had trouble running the main function. Here is what happened:");
             System.out.println(e.getMessage());
             System.exit(1);
         }
