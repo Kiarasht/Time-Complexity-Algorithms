@@ -126,22 +126,33 @@ public class Main {
             compare("Selection", Selection, "Merge", Merge);
             compare("Insertion", Insertion, "Merge", Merge);
             compare("Bubblesort", Bubble, "Merge", Merge);
+            compare("Quick", Quick, "Merge", Merge);
             System.out.println();
             compare("Selection", Selection, "Bubblesort", Bubble);
             compare("Insertion", Insertion, "Bubblesort", Bubble);
             compare("Merge", Merge, "Bubblesort", Bubble);
+            compare("Quick", Quick, "Bubblesort", Bubble);
             System.out.println();
             compare("Insertion", Insertion, "Selection", Selection);
             compare("Bubblesort", Bubble, "Selection", Selection);
             compare("Merge", Merge, "Selection", Selection);
+            compare("Quick", Quick, "Selection", Selection);
             System.out.println();
             compare("Selection", Selection, "Insertion", Insertion);
             compare("Bubblesort", Bubble, "Insertion", Insertion);
             compare("Merge", Merge, "Insertion", Insertion);
+            compare("Quick", Quick, "Insertion", Insertion);
+            System.out.println();
+            compare("Selection", Selection, "Quick", Quick);
+            compare("Insertion", Insertion, "Quick", Quick);
+            compare("Bubblesort", Bubble, "Quick", Quick);
+            compare("Merge", Merge, "Quick", Quick);
+
             data.put(leaderinsertion, "Insertion");
             data.put(leaderselection, "Selection");
             data.put(leaderbubble, "Bubble");
             data.put(leadermerge, "Merge");
+            data.put(leaderquick, "Quick");
 
             leaderboard();
 
@@ -251,9 +262,8 @@ public class Main {
         Thread.sleep(1000);
         System.out.print(".");
         Thread.sleep(1000);
-        System.out.print(".");
+        System.out.print(".\n");
         Thread.sleep(1000);
-        System.out.println(".\n");
     }
 
     /**
