@@ -10,3 +10,5 @@ Currently implements:
 3) Mergesort
 
 4) Bubblesort
+
+5) Quicksort
