@@ -79,7 +79,6 @@ public class Main {
 					System.arraycopy(a[i], 0, b[i], 0, a[i].length);
 				}
 
-
 				ready("First", "Selection");
 
 				for (int i = 0; i < loop; ++i) {
@@ -253,6 +252,36 @@ public class Main {
 		for (int i = 0; i < a.length; ++i) {
 			a[i] = randomnumber();
 		}
+		return a;
+	}
+
+	static int[] inorderarray() {
+		int[] a = new int[size];
+
+		for (int i = 0; i < size; ++i) {
+			a[i] = i;
+		}
+		return a;
+	}
+
+	static int[] reversearray() {
+		int[] a = new int[size];
+		int k = 0;
+
+		for (int i = size; i > 0; --i) {
+			a[k++] = i;
+		}
+
+		return a;
+	}
+
+	static int[] similararray() {
+		int[] a = new int[size];
+
+		for (int i = 0; i < size; ++i) {
+			a[i] = (int) ((Math.random() * 10) + 1) * size;
+		}
+		
 		return a;
 	}
 
