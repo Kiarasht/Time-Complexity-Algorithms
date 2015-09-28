@@ -40,122 +40,143 @@ public class Main {
 			if (args.length != 0) {
 				throw new Exception("Program can not accept additional arguments.");
 			}
-			long totalTime;
-			long endTime;
-			long startTime;
-			long Selection = 0;
-			long Merge = 0;
-			long Insertion = 0;
-			long Bubble = 0;
-			long Quick = 0;
 
-			for (int i = 0; i < loop; ++i) {
-				a[i] = randomarray();
-				size *= 10;
+			for (int arraytype = 0; arraytype < 4; ++arraytype) {
+				size = 10;
+				long totalTime;
+				long endTime;
+				long startTime;
+				long Selection = 0;
+				long Merge = 0;
+				long Insertion = 0;
+				long Bubble = 0;
+				long Quick = 0;
+
+				if (arraytype == 0) {
+					for (int i = 0; i < loop; ++i) {
+						a[i] = randomarray();
+						size *= 10;
+					}
+				} else if (arraytype == 1) {
+					for (int i = 0; i < loop; ++i) {
+						a[i] = inorderarray();
+						size *= 10;
+					}
+				} else if (arraytype == 2) {
+					for (int i = 0; i < loop; ++i) {
+						a[i] = reversearray();
+						size *= 10;
+					}
+				} else if (arraytype == 3) {
+					for (int i = 0; i < loop; ++i) {
+						a[i] = similararray();
+						size *= 10;
+					}
+				}
+
+				for (int i = 0; i < loop; i++) {
+					b[i] = new int[a[i].length];
+					System.arraycopy(a[i], 0, b[i], 0, a[i].length);
+				}
+
+
+				ready("First", "Selection");
+
+				for (int i = 0; i < loop; ++i) {
+					startTime = System.currentTimeMillis();
+					Selectionsort.selectionsort(a[i], a[i].length);
+					endTime = System.currentTimeMillis();
+					totalTime = endTime - startTime;
+					Selection += totalTime;
+					System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+				}
+				System.out.println("Total Time: " + Selection + " milliseconds.");
+
+				recopy();
+				ready("Second", "Mergesort");
+
+				for (int i = 0; i < loop; ++i) {
+					startTime = System.currentTimeMillis();
+					Mergesort.divide(a[i]);
+					endTime = System.currentTimeMillis();
+					totalTime = endTime - startTime;
+					Merge += totalTime;
+					System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+				}
+				System.out.println("Total Time: " + Merge + " milliseconds.");
+
+				recopy();
+				ready("Third", "Insertion");
+
+				for (int i = 0; i < loop; ++i) {
+					startTime = System.currentTimeMillis();
+					Insertionsort.sort(a[i], a[i].length);
+					endTime = System.currentTimeMillis();
+					totalTime = endTime - startTime;
+					Insertion += totalTime;
+					System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+				}
+				System.out.println("Total Time: " + Insertion + " milliseconds.");
+
+				recopy();
+				ready("Fourth", "Bubble");
+
+				for (int i = 0; i < loop; ++i) {
+					startTime = System.currentTimeMillis();
+					Bubblesort.BubbleSort(a[i], a[i].length);
+					endTime = System.currentTimeMillis();
+					totalTime = endTime - startTime;
+					Bubble += totalTime;
+					System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+				}
+				System.out.println("Total Time: " + Bubble + " milliseconds.");
+
+				recopy();
+				ready("Fifth", "Quick");
+
+				for (int i = 0; i < loop; ++i) {
+					startTime = System.currentTimeMillis();
+					Quicksort.quickSort(a[i], 0, a[i].length - 1);
+					endTime = System.currentTimeMillis();
+					totalTime = endTime - startTime;
+					Quick += totalTime;
+					System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
+				}
+				System.out.println("Total Time: " + Quick + " milliseconds.");
+
+				compare("Selection", Selection, "Merge", Merge);
+				compare("Insertion", Insertion, "Merge", Merge);
+				compare("Bubblesort", Bubble, "Merge", Merge);
+				compare("Quick", Quick, "Merge", Merge);
+				System.out.println();
+				compare("Selection", Selection, "Bubblesort", Bubble);
+				compare("Insertion", Insertion, "Bubblesort", Bubble);
+				compare("Merge", Merge, "Bubblesort", Bubble);
+				compare("Quick", Quick, "Bubblesort", Bubble);
+				System.out.println();
+				compare("Insertion", Insertion, "Selection", Selection);
+				compare("Bubblesort", Bubble, "Selection", Selection);
+				compare("Merge", Merge, "Selection", Selection);
+				compare("Quick", Quick, "Selection", Selection);
+				System.out.println();
+				compare("Selection", Selection, "Insertion", Insertion);
+				compare("Bubblesort", Bubble, "Insertion", Insertion);
+				compare("Merge", Merge, "Insertion", Insertion);
+				compare("Quick", Quick, "Insertion", Insertion);
+				System.out.println();
+				compare("Selection", Selection, "Quick", Quick);
+				compare("Insertion", Insertion, "Quick", Quick);
+				compare("Bubblesort", Bubble, "Quick", Quick);
+				compare("Merge", Merge, "Quick", Quick);
+
+				data.put(leaderinsertion, "Insertion");
+				data.put(leaderselection, "Selection");
+				data.put(leaderbubble, "Bubble");
+				data.put(leadermerge, "Merge");
+				data.put(leaderquick, "Quick");
+
+				leaderboard();
 			}
-
-			for (int i = 0; i < loop; i++) {
-				b[i] = new int[a[i].length];
-				System.arraycopy(a[i], 0, b[i], 0, a[i].length);
-			}
-
-			ready("First", "Selection");
-
-			for (int i = 0; i < loop; ++i) {
-				startTime = System.currentTimeMillis();
-				Selectionsort.selectionsort(a[i], a[i].length);
-				endTime = System.currentTimeMillis();
-				totalTime = endTime - startTime;
-				Selection += totalTime;
-				System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
-			}
-			System.out.println("Total Time: " + Selection + " milliseconds.");
-
-			recopy();
-			ready("Second", "Mergesort");
-
-			for (int i = 0; i < loop; ++i) {
-				startTime = System.currentTimeMillis();
-				Mergesort.divide(a[i]);
-				endTime = System.currentTimeMillis();
-				totalTime = endTime - startTime;
-				Merge += totalTime;
-				System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
-			}
-			System.out.println("Total Time: " + Merge + " milliseconds.");
-
-			recopy();
-			ready("Third", "Insertion");
-
-			for (int i = 0; i < loop; ++i) {
-				startTime = System.currentTimeMillis();
-				Insertionsort.sort(a[i], a[i].length);
-				endTime = System.currentTimeMillis();
-				totalTime = endTime - startTime;
-				Insertion += totalTime;
-				System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
-			}
-			System.out.println("Total Time: " + Insertion + " milliseconds.");
-
-			recopy();
-			ready("Fourth", "Bubble");
-
-			for (int i = 0; i < loop; ++i) {
-				startTime = System.currentTimeMillis();
-				Bubblesort.BubbleSort(a[i], a[i].length);
-				endTime = System.currentTimeMillis();
-				totalTime = endTime - startTime;
-				Bubble += totalTime;
-				System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
-			}
-			System.out.println("Total Time: " + Bubble + " milliseconds.");
-
-			recopy();
-			ready("Fifth", "Quick");
-
-			for (int i = 0; i < loop; ++i) {
-				startTime = System.currentTimeMillis();
-				Quicksort.quickSort(a[i], 0, a[i].length - 1);
-				endTime = System.currentTimeMillis();
-				totalTime = endTime - startTime;
-				Quick += totalTime;
-				System.out.println("Time for array of size " + a[i].length + ": " + totalTime + " milliseconds.");
-			}
-			System.out.println("Total Time: " + Quick + " milliseconds.");
-
-			compare("Selection", Selection, "Merge", Merge);
-			compare("Insertion", Insertion, "Merge", Merge);
-			compare("Bubblesort", Bubble, "Merge", Merge);
-			compare("Quick", Quick, "Merge", Merge);
-			System.out.println();
-			compare("Selection", Selection, "Bubblesort", Bubble);
-			compare("Insertion", Insertion, "Bubblesort", Bubble);
-			compare("Merge", Merge, "Bubblesort", Bubble);
-			compare("Quick", Quick, "Bubblesort", Bubble);
-			System.out.println();
-			compare("Insertion", Insertion, "Selection", Selection);
-			compare("Bubblesort", Bubble, "Selection", Selection);
-			compare("Merge", Merge, "Selection", Selection);
-			compare("Quick", Quick, "Selection", Selection);
-			System.out.println();
-			compare("Selection", Selection, "Insertion", Insertion);
-			compare("Bubblesort", Bubble, "Insertion", Insertion);
-			compare("Merge", Merge, "Insertion", Insertion);
-			compare("Quick", Quick, "Insertion", Insertion);
-			System.out.println();
-			compare("Selection", Selection, "Quick", Quick);
-			compare("Insertion", Insertion, "Quick", Quick);
-			compare("Bubblesort", Bubble, "Quick", Quick);
-			compare("Merge", Merge, "Quick", Quick);
-
-			data.put(leaderinsertion, "Insertion");
-			data.put(leaderselection, "Selection");
-			data.put(leaderbubble, "Bubble");
-			data.put(leadermerge, "Merge");
-			data.put(leaderquick, "Quick");
-
-			leaderboard();
-
 		} catch (InterruptedException e) {
 			System.out.println("I had trouble using the sleep function. Here is what happened:");
 			System.out.println(e.getMessage());
