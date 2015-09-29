@@ -31,9 +31,9 @@ public class Main {
 	/**
 	 * Bread and butter of the program starts right here at main. We start by declaring long values that will
 	 * be used for comparing the sorting algorithms. Here we will be only comparing them using randomly generated
-	 * arrays and later on using sorted, inverted, and same values arrays.
+	 * arrays and later on using sorted, reverse-sorted, and few unique arrays.
 	 *
-	 * @param args Nothing, this program does not except args
+	 * @param args Nothing, this program does not except args. We will check to see if its length is zero.
 	 */
 	public static void main(String[] args) {
 		try {
@@ -41,6 +41,13 @@ public class Main {
 				throw new Exception("Program can not accept additional arguments.");
 			}
 
+			/**
+			 * We will loop four times to check each sorting algorithm with four different array types.
+			 * 1. Random
+			 * 2. Sorted
+			 * 3. Sorted-reverse
+			 * 4. Few unique hours
+			 */
 			for (int arraytype = 0; arraytype < 4; ++arraytype) {
 				size = 10;
 				long totalTime;
@@ -269,7 +276,7 @@ public class Main {
 		int k = 0;
 
 		for (int i = size; i > 0; --i) {
-			a[k++] = i;
+			a[k++] = i-1;
 		}
 
 		return a;
@@ -281,7 +288,7 @@ public class Main {
 		for (int i = 0; i < size; ++i) {
 			a[i] = (int) ((Math.random() * 10) + 1) * size;
 		}
-		
+
 		return a;
 	}
 
